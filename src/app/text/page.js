@@ -1,6 +1,8 @@
 'use client'
 
 import * as THREE from 'three';
+import { FontLoader } from 'three/addons/loaders/FontLoader.js';
+import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { useEffect, useRef } from "react";
 
 function MyThree() {
@@ -25,9 +27,9 @@ function MyThree() {
         //   renderer.render(scene, camera);
         // };
         // animate();
-        const loader = new THREE.FontLoader()
+        const loader = new FontLoader()
             loader.load('/../../public/typeface.json', function (font) {
-            const geometry = new THREE.TextGeometry('Hello Three.js!', {
+            const geometry = new TextGeometry('Hello Three.js!', {
                 font: font,
                 size: 3,
                 height: 0.2,
@@ -39,16 +41,14 @@ function MyThree() {
                 bevelSegments: 5,
             });
         });
-        const material = new THREE.MeshFaceMaterial([
-            new THREE.MeshPhongMaterial({
-                color: 0xff22cc,
-                flatShading: true,
-            }), // front
-            new THREE.MeshPhongMaterial({
-                color: 0xffcc22
-            }), // side
-         ])
-        const mesh = new THREE.Mesh(geometry, material)
+        const material1 = new THREE.MeshPhongMaterial({
+            color: 0xff22cc,
+            flatShading: true,
+        }); // front
+        const material2 = new THREE.MeshPhongMaterial({
+            color: 0xffcc22
+        }); // side
+        const mesh = new THREE.Mesh(geometry, [ material1, material2 ])
         mesh.name = 'text'
         scene.add(mesh)
     }, []);
