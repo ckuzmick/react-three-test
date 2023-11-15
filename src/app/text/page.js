@@ -2,7 +2,7 @@
 
 import * as THREE from 'three';
 import { useEffect, useRef } from "react";
-import '/../../public/packers.jpg';
+import '@/../public/packers.jpg';
 
 function MyThree() {
   const refContainer = useRef(null);
@@ -10,7 +10,7 @@ function MyThree() {
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     var renderer = new THREE.WebGLRenderer();
-    const bg = new THREE.TextureLoader().load('/../../public/packers.jpg');
+    const bg = new THREE.TextureLoader().load('@/../public/packers.jpg');
     scene.scene.background = bg;
     renderer.setSize(window.innerWidth, window.innerHeight);
     // document.body.appendChild( renderer.domElement );
