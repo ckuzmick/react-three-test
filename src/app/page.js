@@ -26,6 +26,14 @@ import { useRef } from 'react';
 // }
 
 export default function Home() {
+  const myMesh = useRef();
+
+  useFrame(({ clock }) => {
+    const a = clock.getElapsedTime();
+    myMesh.current.rotation.x = (a*a) / 5;
+    myMesh.current.rotation.y = a*2;
+  });
+
   return (
     <main>
       <div id="root">
@@ -33,8 +41,8 @@ export default function Home() {
           <ambientLight intensity={100} />
           <directionalLight color="white" intensity={10} position={[0, 1, 10]} />
           <mesh rotation={[0, 0, 0]} position={[0, 0, 0]}>
-            <boxGeometry args={[10, 2, 10]}/>
-            <meshNormalMaterial wireframe={true}/>
+            <boxGeometry args={[2, 2, 2]}/>
+            <meshNormalMaterial wireframe={true} ref={box}/>
           </mesh>
           {/* <MyRotatingBox/> */}
         </Canvas>
