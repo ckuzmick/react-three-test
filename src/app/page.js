@@ -27,9 +27,8 @@ function MyThree() {
     animate();
   }, []);
   return (
-    <div ref={refContainer}></div>
-
+    <div ref={refContainer}/>
   );
-}
+};
 
-export default MyThree
+export default MyThree;
