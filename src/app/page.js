@@ -26,13 +26,15 @@ import { useRef } from 'react';
 // }
 
 export default function Home() {
-  // const myMesh = useRef();
-
-  // useFrame(({ clock }) => {
-  //   const a = clock.getElapsedTime();
-  //   myMesh.current.rotation.x = (a*a) / 5;
-  //   myMesh.current.rotation.y = a*2;
-  // });
+  const myMesh = useRef();
+  
+  useEffect(() => {
+  useFrame(({ clock }) => {
+    const a = clock.getElapsedTime();
+    myMesh.current.rotation.x = (a*a) / 5;
+    myMesh.current.rotation.y = a*2;
+  });
+  }, []);
 
   return (
     <main>
