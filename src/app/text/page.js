@@ -18,7 +18,8 @@ function MyThree() {
     refContainer.current && refContainer.current.appendChild( renderer.domElement );
     var geometry = new THREE.BoxGeometry(3, 3, 3);
     var material = new THREE.MeshNormalMaterial({ wireframe: true });
-    var cube = new THREE.Mesh(geometry, material);
+    var mapped = new THREE.MeshStandardMaterial({ map: bg });
+    var cube = new THREE.Mesh(geometry, mapped);
     scene.add(cube);
     camera.position.z = 5;
     var animate = function () {
