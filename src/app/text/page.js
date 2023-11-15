@@ -19,7 +19,7 @@ function MyThree() {
         // var material = new THREE.MeshNormalMaterial({ wireframe: true });
         // var cube = new THREE.Mesh(geometry, material);
         // scene.add(cube);
-        // camera.position.z = 5;
+        camera.position.z = 5;
         // var animate = function () {
         //   requestAnimationFrame(animate);
         //   cube.rotation.x += 0.01;
