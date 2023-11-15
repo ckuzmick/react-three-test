@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import { useEffect, useRef } from 'react';
 
-function newText() {
+function NewText() {
     const container = useRef(null)
     useEffect(() => {
         var scene = new THREE.Scene();
@@ -24,4 +24,4 @@ function newText() {
     );
 };
 
-export default newText;
+export default NewText;
