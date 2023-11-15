@@ -42,11 +42,11 @@ function MyThree() {
             });
         });
         const material1 = new THREE.MeshPhongMaterial({
-            color: 'blue',
+            color: 'red',
             flatShading: true,
         }); // front
         const material2 = new THREE.MeshPhongMaterial({
-            color: 'blue'
+            color: 'red'
         }); // side
         const mesh = new THREE.Mesh(geometry, [ material1, material2 ])
         mesh.name = 'text'
