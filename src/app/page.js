@@ -8,21 +8,14 @@ import * as THREE from 'three';
 import '../../public/packers.jpg';
 import { useRef } from 'react';
 
-const texture = new
-THREE.TextureLoader().load('../../public/packers.jpg');
-
-texture.wrapS = texture.wrapT = THREE.RepeatWrapping; // Repeat the texture
-texture.repeat.set(1, 1); // Number of times the texture is repeated in each direction
-texture.offset.set(0, 0);
-
 function MyRotatingBox() {
-  const myMesh = useRef();
+  // const myMesh = useRef();
 
-  useFrame(({ clock }) => {
-    const a = clock.getElapsedTime();
-    myMesh.current.rotation.x = (a*a) / 5;
-    myMesh.current.rotation.y = a*2;
-  });
+  // useFrame(({ clock }) => {
+  //   const a = clock.getElapsedTime();
+  //   myMesh.current.rotation.x = (a*a) / 5;
+  //   myMesh.current.rotation.y = a*2;
+  // });
 
   return (
     <mesh ref={myMesh}>
