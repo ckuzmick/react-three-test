@@ -1,54 +1,35 @@
-'use client'
-
-import Image from 'next/image'
-import { createRoot } from 'react-dom'
-import { Canvas, useFrame } from '@react-three/fiber'
-import "./globals.css";
 import * as THREE from 'three';
-import '../../public/packers.jpg';
-import { useRef } from 'react';
 
-// function MyRotatingBox() {
-//   const myMesh = useRef();
+import { useEffect, useRef } from "react";
 
-//   useFrame(({ clock }) => {
-//     const a = clock.getElapsedTime();
-//     myMesh.current.rotation.x = (a*a) / 5;
-//     myMesh.current.rotation.y = a*2;
-//   });
-
-//   return (
-//     <mesh ref={myMesh}>
-//       <boxGeometry />
-//       <meshNormalMaterial wireframe={true} />
-//     </mesh>
-//   );
-// }
-
-export default function Home() {
-  const myMesh = useRef();
-  
+function MyThree() {
+  const refContainer = useRef(null);
   useEffect(() => {
-  useFrame(({ clock }) => {
-    const a = clock.getElapsedTime();
-    myMesh.current.rotation.x = (a*a) / 5;
-    myMesh.current.rotation.y = a*2;
-  });
+    // === THREE.JS CODE START ===
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    // document.body.appendChild( renderer.domElement );
+    // use ref as a mount point of the Three.js scene instead of the document.body
+    refContainer.current && refContainer.current.appendChild( renderer.domElement );
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
+    var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    var cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+    camera.position.z = 5;
+    var animate = function () {
+      requestAnimationFrame(animate);
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    };
+    animate();
   }, []);
-
   return (
-    <main>
-      <div id="root">
-        <Canvas style={{ height: '100vh' }}>
-          <ambientLight intensity={100} />
-          <directionalLight color="white" intensity={10} position={[0, 1, 10]} />
-          <mesh rotation={[0, 0, 0]} position={[0, 0, 0]}>
-            <boxGeometry args={[2, 2, 2]}/>
-            <meshNormalMaterial wireframe={true} ref={box}/>
-          </mesh>
-          {/* <MyRotatingBox/> */}
-        </Canvas>
-      </div>
-    </main>
-  )
+    <div ref={refContainer}></div>
+
+  );
 }
+
+export default MyThree
