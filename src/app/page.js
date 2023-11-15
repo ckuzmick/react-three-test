@@ -20,7 +20,7 @@ function MyRotatingBox() {
 
   useFrame(({ clock }) => {
     const a = clock.getElapsedTime();
-    myMesh.current.rotation.x = a*a;
+    myMesh.current.rotation.x = (a*a) / 5;
     myMesh.current.rotation.y = a*2;
   });
 
