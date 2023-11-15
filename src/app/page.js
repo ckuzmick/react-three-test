@@ -1,5 +1,6 @@
-import * as THREE from 'three';
+'use client'
 
+import * as THREE from 'three';
 import { useEffect, useRef } from "react";
 
 function MyThree() {
