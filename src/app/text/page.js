@@ -50,7 +50,7 @@ function MyThree() {
       // cube.rotation.y += 0.01;
       renderer.render(scene, camera);
       labelRenderer.render(scene, camera);
-      camera.position.y = scrollY
+      h1.textContent = scrollY;
     };
     animate();
 
