@@ -52,13 +52,19 @@ function MyThree() {
     };
     animate();
 
-    function UpdateCamera(ev) {
-      let refContainer = useRef(null);
-      camera.position.x = 10 - window.scrollY / 500.0;
-      camera.position.z = 10 - window.scrollY / 500.0;
-  }
-  
-  window.addEventListener("scroll", UpdateCamera);
+    window.addEventListener('resize', () => {
+      // Update sizes
+      sizes.width = window.innerWidth
+      sizes.height = window.innerHeight
+
+      // Update camera
+      camera.aspect = sizes.width / sizes.height
+      camera.updateProjectionMatrix()
+
+      // Update renderer
+      renderer.setSize(sizes.width, sizes.height)
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    })
 
   }, []);
   return (
