@@ -49,6 +49,7 @@ function MyThree() {
       // cube.rotation.y += 0.01;
       renderer.render(scene, camera);
       labelRenderer.render(scene, camera);
+      camera.position.y = scrollY
     };
     animate();
 
@@ -65,6 +66,13 @@ function MyThree() {
       renderer.setSize(sizes.width, sizes.height)
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     })
+
+    let scrollY = window.scrollY
+
+    window.addEventListener('scroll', () => {
+      scrollY = window.scrollY
+      console.log(scrollY)
+    });
 
   }, []);
   return (
