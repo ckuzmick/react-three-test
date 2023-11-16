@@ -52,13 +52,13 @@ function MyThree() {
     };
     animate();
 
-    function updateCamera(ev) {
+    function UpdateCamera(ev) {
       let refContainer = useRef(null);
       camera.position.x = 10 - window.scrollY / 500.0;
       camera.position.z = 10 - window.scrollY / 500.0;
   }
   
-  window.addEventListener("scroll", updateCamera);
+  window.addEventListener("scroll", UpdateCamera);
 
   }, []);
   return (
