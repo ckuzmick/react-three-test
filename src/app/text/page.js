@@ -53,11 +53,12 @@ function MyThree() {
     animate();
 
     function updateCamera(ev) {
-      let div1 = document.getElementById("div1");
-      camera.position.z = -1.5 + window.scrollY / 250.0;
-    }
+      let refContainer = useRef(null);
+      camera.position.x = 10 - window.scrollY / 500.0;
+      camera.position.z = 10 - window.scrollY / 500.0;
+  }
   
-    window.addEventListener("scroll", updateCamera);
+  window.addEventListener("scroll", updateCamera);
 
   }, []);
   return (
