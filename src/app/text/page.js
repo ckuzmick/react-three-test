@@ -7,10 +7,13 @@ import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRe
 import '../globals.css';
 
 function MyThree() {
+
   const refContainer = useRef(null);
+
   useEffect(() => {
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = -1.5 + window.scrollY / 250.0;
     var renderer = new THREE.WebGLRenderer();
       renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -37,17 +40,25 @@ function MyThree() {
     var material = new THREE.MeshNormalMaterial({ wireframe: true });
     var cube = new THREE.Mesh(geometry, material);
       scene.add(cube);
+      
     camera.position.z = 5;
+
     var animate = function () {
       requestAnimationFrame(animate);
       cube.rotation.x += 0.01;
       // cube.rotation.y += 0.01;
-      testP.rotation.z += 0.01;
-      
       renderer.render(scene, camera);
       labelRenderer.render(scene, camera);
     };
     animate();
+
+    function updateCamera(ev) {
+      let div1 = document.getElementById("div1");
+      camera.position.z = -1.5 + window.scrollY / 250.0;
+    }
+  
+    window.addEventListener("scroll", updateCamera);
+
   }, []);
   return (
     <main>
