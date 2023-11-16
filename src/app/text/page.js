@@ -44,13 +44,14 @@ function MyThree() {
     camera.position.z = 5;
 
     var animate = function () {
-      let scrollY = window.pageYOffset;
+      let scrollY = window.scrollY;
       requestAnimationFrame(animate);
       cube.rotation.x += 0.01;
       // cube.rotation.y += 0.01;
       renderer.render(scene, camera);
       labelRenderer.render(scene, camera);
       h1.textContent = scrollY;
+      camera.position.z = scrollY/10;
     };
     animate();
 
