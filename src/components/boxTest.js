@@ -7,6 +7,7 @@ import '../app/globals.css';
 
 const BoxTest = () => {
   const refContainer = useRef(null);
+  const scrollDisplay = useRef(null);
 
   useEffect(() => {
     var scene = new THREE.Scene();
@@ -15,27 +16,15 @@ const BoxTest = () => {
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    var controls = new OrbitControls(camera, renderer.domElement);
-    controls.mouseButtons = {
-      ORBIT: THREE.MOUSE.RIGHT,
-      DOLLY: THREE.MOUSE.MIDDLE,
-      PAN: THREE.MOUSE.LEFT,
-    };
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.12;
-    controls.rotateSpeed = 0.08;
-    controls.autoRotate = false;
-    controls.autoRotateSpeed = 0.08;
-    controls.maxPolarAngle = Math.PI / 2;
-    controls.minDistance = 1;
-    controls.maxDistance = 6;
-
     refContainer.current && refContainer.current.appendChild(renderer.domElement);
 
     var geometry = new THREE.BoxGeometry(2, 1, 0.5);
-    var material = new THREE.MeshNormalMaterial({ wireframe: false });
+    var material = new THREE.MeshNormalMaterial({ 
+        wireframe: true,
+        color: 'pink' 
+    });
     var cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+        scene.add(cube);
 
     camera.position.z = 5;
 
@@ -53,10 +42,28 @@ const BoxTest = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
     });
-    
+
   }, []);
 
-  return <div ref={refContainer} />;
+  return <>
+  <div ref={refContainer} />
+  <p ref={scrollDisplay}></p>
+  </>;
 };
 
 export default BoxTest;
+
+    // var controls = new OrbitControls(camera, renderer.domElement);
+    // controls.mouseButtons = {
+    //   ORBIT: THREE.MOUSE.RIGHT,
+    //   DOLLY: THREE.MOUSE.MIDDLE,
+    //   PAN: THREE.MOUSE.LEFT,
+    // };
+    // controls.enableDamping = true;
+    // controls.dampingFactor = 0.12;
+    // controls.rotateSpeed = 0.08;
+    // controls.autoRotate = false;
+    // controls.autoRotateSpeed = 0.08;
+    // controls.maxPolarAngle = Math.PI / 2;
+    // controls.minDistance = 1;
+    // controls.maxDistance = 6;

@@ -18,3 +18,11 @@ h1 {
   font-size: 50px;
   font-weight: 600;
 }
+
+section {
+  height: 100vh;
+}
+
+p {
+  color: white;
+}
