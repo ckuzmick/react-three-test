@@ -1,12 +1,11 @@
 'use client'
 
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { useEffect, useRef } from 'react';
-import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import '../globals.css';
+import '../app/globals.css';
 
-function MyThree() {
+const BoxTest = () => {
   const refContainer = useRef(null);
 
   useEffect(() => {
@@ -33,20 +32,6 @@ function MyThree() {
 
     refContainer.current && refContainer.current.appendChild(renderer.domElement);
 
-    // var labelRenderer = new CSS2DRenderer();
-    // labelRenderer.setSize(window.innerWidth, window.innerHeight);
-    // labelRenderer.domElement.style.position = 'absolute';
-    // labelRenderer.domElement.style.top = '0px';
-    // labelRenderer.domElement.style.color = 'white';
-
-    // refContainer.current && refContainer.current.appendChild(labelRenderer.domElement);
-
-    // var h1 = document.createElement('h1');
-    // h1.textContent = 'Who is really titletown?';
-    // var testP = new CSS2DObject(h1);
-    // scene.add(testP);
-    // testP.position.set(0, 2, 0);
-
     var geometry = new THREE.BoxGeometry(2, 1, 0.5);
     var material = new THREE.MeshNormalMaterial({ wireframe: false });
     var cube = new THREE.Mesh(geometry, material);
@@ -55,14 +40,12 @@ function MyThree() {
     camera.position.z = 5;
 
     var animate = function () {
-      let scrollY = window.scrollY;
       requestAnimationFrame(animate);
       cube.rotation.x += 0.01;
       cube.rotation.y += 0.01;
-      controls.update();
       renderer.render(scene, camera);
-      // labelRenderer.render(scene, camera);
     };
+
     animate();
 
     window.addEventListener('resize', () => {
@@ -70,13 +53,10 @@ function MyThree() {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
     });
+    
   }, []);
 
-  return (
-    <main>
-      <div ref={refContainer} />
-    </main>
-  );
-}
+  return <div ref={refContainer} />;
+};
 
-export default MyThree;
+export default BoxTest;
