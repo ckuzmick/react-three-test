@@ -83,7 +83,7 @@ function MyThree() {
 
     const geometry1 = new THREE.BoxGeometry(1, 1, 1);
     var cube1 = new THREE.Mesh(geometry, material);
-      scene.add(cube);
+      scene.add(cube1);
 
     camera.position.z = 10;
 
