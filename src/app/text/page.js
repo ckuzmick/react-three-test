@@ -29,7 +29,7 @@ function MyThree() {
     controls.autoRotateSpeed = 0.08;
     controls.maxPolarAngle = Math.PI / 2;
     controls.minDistance = 1;
-    controls.maxDistance = 12;
+    controls.maxDistance = 20;
 
     refContainer.current && refContainer.current.appendChild(renderer.domElement);
 
@@ -51,17 +51,17 @@ function MyThree() {
       {
         x: 1,
         y: 2,
-        z: 4
+        z: 0
       },
       {
         x: 1,
         y: 5,
-        z: 2
+        z: 0
       },
       {
         x: 1,
         y: 7,
-        z: 6
+        z: 0
       }
     ]
 
