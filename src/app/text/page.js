@@ -26,7 +26,7 @@ function MyThree() {
     controls.dampingFactor = 0.12;
     controls.rotateSpeed = 0.08;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.08;
+    controls.autoRotateSpeed = 1;
     controls.maxPolarAngle = Math.PI / 2;
     controls.minDistance = 1;
     controls.maxDistance = 20;
