@@ -50,15 +50,34 @@ function MyThree() {
     const points = [
       {
         "x": 1,
-        "y": 5,
+        "y": 2,
         "z": 4
+      },
+      {
+        "x": 1,
+        "y": 5,
+        "z": 2
+      },
+      {
+        "x": 1,
+        "y": 7,
+        "z": 6
       }
     ]
+
+    for (const point in points) {
+      var geometry = new THREE.BoxGeometry(1, 1, 1);
+      var cube = new THREE.Mesh(geometry, material);
+        cube.position.x = point.x;
+        cube.position.y = point.y;
+        cube.position.z = point.z;
+        scene.add(cube);
+    };
 
     var geometry = new THREE.BoxGeometry(points[0].x, points[0].y, points[0].z);
     var material = new THREE.MeshNormalMaterial({ wireframe: false });
     var cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+      scene.add(cube);
 
     camera.position.z = 5;
 
