@@ -29,7 +29,7 @@ function MyThree() {
     controls.autoRotateSpeed = 0.08;
     controls.maxPolarAngle = Math.PI / 2;
     controls.minDistance = 1;
-    controls.maxDistance = 6;
+    controls.maxDistance = 12;
 
     refContainer.current && refContainer.current.appendChild(renderer.domElement);
 
@@ -86,7 +86,7 @@ function MyThree() {
       cube.position.z = points[0].z;
       scene.add(cube);
 
-    camera.position.z = 5;
+    camera.position.z = 10;
 
     var animate = function () {
       let scrollY = window.scrollY;
