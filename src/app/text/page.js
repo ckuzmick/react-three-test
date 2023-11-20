@@ -53,28 +53,28 @@ function MyThree() {
         "y": 2,
         "z": 4
       }
-      // {
-      //   "x": 1,
-      //   "y": 5,
-      //   "z": 2
-      // },
-      // {
-      //   "x": 1,
-      //   "y": 7,
-      //   "z": 6
-      // }
+      {
+        "x": 1,
+        "y": 5,
+        "z": 2
+      },
+      {
+        "x": 1,
+        "y": 7,
+        "z": 6
+      }
     ]
 
     var material = new THREE.MeshNormalMaterial({ wireframe: false });
 
-    // for (const point in points) {
-    //   const geometry = new THREE.BoxGeometry(1, 1, 1);
-    //   var cube = new THREE.Mesh(geometry, material);
-    //     cube.position.x = point.x;
-    //     cube.position.y = point.y;
-    //     cube.position.z = point.z;
-    //     scene.add(cube);
-    // };
+    for (const point in points) {
+      const geometry = new THREE.BoxGeometry(1, 1, 1);
+      var cube = new THREE.Mesh(geometry, material);
+        cube.position.x = points[point].x;
+        cube.position.y = points[point].y;
+        cube.position.z = points[point].z;
+        scene.add(cube);
+    };
 
     // var geometry = new THREE.BoxGeometry(points[0].x, points[0].y, points[0].z);
     // var material = new THREE.MeshNormalMaterial({ wireframe: false });
