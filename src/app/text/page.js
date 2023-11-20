@@ -48,10 +48,14 @@ function MyThree() {
     // testP.position.set(0, 2, 0);
 
     const points = [
-      1, 2, 3
+      {
+        "x": 1,
+        "y": 5,
+        "z": 4
+      }
     ]
 
-    var geometry = new THREE.BoxGeometry(points[0], points[1], points[2]);
+    var geometry = new THREE.BoxGeometry(points[0].x, points[0].y, points[0].z);
     var material = new THREE.MeshNormalMaterial({ wireframe: false });
     var cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
