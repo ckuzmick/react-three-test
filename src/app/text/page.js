@@ -71,13 +71,13 @@ function MyThree() {
         cube.position.x = point.x;
         cube.position.y = point.y;
         cube.position.z = point.z;
-        scene.add(cube);
+        return scene.add(cube);
     };
 
-    var geometry = new THREE.BoxGeometry(points[0].x, points[0].y, points[0].z);
-    var material = new THREE.MeshNormalMaterial({ wireframe: false });
-    var cube = new THREE.Mesh(geometry, material);
-      scene.add(cube);
+    // var geometry = new THREE.BoxGeometry(points[0].x, points[0].y, points[0].z);
+    // var material = new THREE.MeshNormalMaterial({ wireframe: false });
+    // var cube = new THREE.Mesh(geometry, material);
+    //   scene.add(cube);
 
     camera.position.z = 5;
 
