@@ -81,12 +81,9 @@ function MyThree() {
     // var cube = new THREE.Mesh(geometry, material);
     //   scene.add(cube);
 
-    // const geometry = new THREE.BoxGeometry(1, 1, 1);
-    // var cube = new THREE.Mesh(geometry, material);
-    //   cube.position.x = points[0].x;
-    //   cube.position.y = points[0].y;
-    //   cube.position.z = points[0].z;
-    //   scene.add(cube);
+    const geometry1 = new THREE.BoxGeometry(1, 1, 1);
+    var cube1 = new THREE.Mesh(geometry, material);
+      scene.add(cube);
 
     camera.position.z = 10;
 
