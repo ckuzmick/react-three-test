@@ -76,14 +76,14 @@ function MyThree() {
     //     scene.add(cube);
     // };
 
-    // var geometry = new THREE.BoxGeometry(points[0].x, points[0].y, points[0].z);
-    // var material = new THREE.MeshNormalMaterial({ wireframe: false });
+    var geometry = new THREE.BoxGeometry(points[0].x, points[0].y, points[0].z);
+    var material = new THREE.MeshNormalMaterial({ wireframe: false });
+    var cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
+
+    // var geometry = new THREE.BoxGeometry(1, 1, 1);
     // var cube = new THREE.Mesh(geometry, material);
     //   scene.add(cube);
-
-    const geometry1 = new THREE.BoxGeometry(1, 1, 1);
-    var cube1 = new THREE.Mesh(geometry1, material);
-      scene.add(cube1);
 
     camera.position.z = 10;
 
