@@ -66,12 +66,12 @@ function MyThree() {
     ]
 
     for (const point in points) {
-      var geometry = new THREE.BoxGeometry(1, 1, 1);
-      var cube = new THREE.Mesh(geometry, material);
+      var geometry,[point] = new THREE.BoxGeometry(1, 1, 1);
+      var cube,[point] = new THREE.Mesh(geometry, material);
         cube.position.x = point.x;
         cube.position.y = point.y;
         cube.position.z = point.z;
-        return scene.add(cube);
+        return scene.add(cube,[point]);
     };
 
     // var geometry = new THREE.BoxGeometry(points[0].x, points[0].y, points[0].z);
