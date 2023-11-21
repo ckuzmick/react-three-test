@@ -70,7 +70,7 @@ function MyThree() {
     ]
 
 
-
+    const max = Math.max(...heights);
     const arrayLength = heights.length;
 
     var material = new THREE.MeshNormalMaterial({ wireframe: false });
@@ -88,7 +88,7 @@ function MyThree() {
       const geometry = new THREE.BoxGeometry(.5, bar, .5);
       var cube = new THREE.Mesh(geometry, material);
         cube.position.x = i - arrayLength/2 + .5;
-        cube.position.y = bar/2;
+        cube.position.y = bar/2 - max;
         cube.position.z = 0;
         scene.add(cube);
     });
