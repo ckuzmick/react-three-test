@@ -28,7 +28,7 @@ function MyThree() {
     controls.autoRotate = false;
     controls.autoRotateSpeed = 1;
     controls.maxPolarAngle = Math.PI / 2;
-    controls.minDistance = -20;
+    controls.minDistance = 1;
     controls.maxDistance = 20;
 
     refContainer.current && refContainer.current.appendChild(renderer.domElement);
@@ -63,15 +63,15 @@ function MyThree() {
         y: 7,
         z: 0
       }
-    ]
+    ];
 
     const heights1 = [
       3, 4, 8, 6, 3, 4, 9, 4, 5, 6, 10, 12, 14, 10, 9, 4
-    ]
+    ];
 
     const heights2 = [
       4, 5, 7, 2, 3, 8, 12, 5, 10, 3, 4, 2, 7, 2, 7, 3
-    ]
+    ];
 
     const max = (array) => Math.max(array);
     const length = (array) => array.length;
@@ -87,18 +87,16 @@ function MyThree() {
     //     scene.add(cube);
     // };
     
-    // function createBarChart(array) {
-    //   array.forEach((bar, i) => {
-    //     const geometry = new THREE.BoxGeometry(.5, bar, .5);
-    //     var cube = new THREE.Mesh(geometry, material);
-    //       cube.position.x = i - length(array)/2 + .5;
-    //       cube.position.y = bar/2 - max(array)/2;
-    //       cube.position.z = 0;
-    //       scene.add(cube);
-    //   })
-    // };
-
-    // createBarChart(heights1)
+    createBarChart = (array) => {
+      array.forEach((bar, i) => {
+        const geometry = new THREE.BoxGeometry(.5, bar, .5);
+        var cube = new THREE.Mesh(geometry, material);
+        cube.position.x = i - length(array)/2 + .5;
+        cube.position.y = bar/2 - max(array)/2;
+        cube.position.z = 0;
+        scene.add(cube);
+      })
+    };
 
     heights1.forEach((bar, i) => {
       const geometry = new THREE.BoxGeometry(.5, bar, .5);
@@ -106,15 +104,6 @@ function MyThree() {
         cube.position.x = i - length(heights1)/2 + .5;
         cube.position.y = bar/2 - max(heights1)/2;
         cube.position.z = 0;
-        scene.add(cube);
-    });
-
-    heights2.forEach((bar, i) => {
-      const geometry = new THREE.BoxGeometry(.5, bar, .5);
-      var cube = new THREE.Mesh(geometry, material);
-        cube.position.x = i - length(heights2)/2 + .5;
-        cube.position.y = bar/2 - max(heights2)/2;
-        cube.position.z = -6;
         scene.add(cube);
     });
 
