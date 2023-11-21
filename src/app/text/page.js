@@ -87,7 +87,7 @@ function MyThree() {
     //     scene.add(cube);
     // };
     
-    createBarChart = (array) => {
+    function createBarChart(array) {
       array.forEach((bar, i) => {
         const geometry = new THREE.BoxGeometry(.5, bar, .5);
         var cube = new THREE.Mesh(geometry, material);
