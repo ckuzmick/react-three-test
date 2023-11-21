@@ -63,15 +63,15 @@ function MyThree() {
         y: 7,
         z: 0
       }
-    ];
+    ]
 
-    const heights1 = [
+    const heights = [
       3, 4, 8, 6, 3, 4, 9, 4, 5, 6, 10, 12, 14, 10, 9, 4
-    ];
+    ]
 
     const heights2 = [
-      4, 5, 7, 2, 3, 8, 12, 5, 10, 3, 4, 2, 7, 2, 7, 3
-    ];
+      4, 5, 7, 2, 3, 8, 12, 5, 10, 3, 10, 12, 4, 7, 10
+    ]
 
     const max = (array) => Math.max(array);
     const length = (array) => array.length;
@@ -86,23 +86,12 @@ function MyThree() {
         // cube.position.z = points[point].z;
     //     scene.add(cube);
     // };
-    
-    createBarChart = (array) => {
-      array.forEach((bar, i) => {
-        const geometry = new THREE.BoxGeometry(.5, bar, .5);
-        var cube = new THREE.Mesh(geometry, material);
-        cube.position.x = i - length(array)/2 + .5;
-        cube.position.y = bar/2 - max(array)/2;
-        cube.position.z = 0;
-        scene.add(cube);
-      })
-    };
 
-    heights1.forEach((bar, i) => {
+    heights.forEach((bar, i) => {
       const geometry = new THREE.BoxGeometry(.5, bar, .5);
       var cube = new THREE.Mesh(geometry, material);
-        cube.position.x = i - length(heights1)/2 + .5;
-        cube.position.y = bar/2 - max(heights1)/2;
+        cube.position.x = i - length(heights)/2 + .5;
+        cube.position.y = bar/2 - max(heights)/2;
         cube.position.z = 0;
         scene.add(cube);
     });
