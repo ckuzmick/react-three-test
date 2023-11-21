@@ -28,7 +28,7 @@ function MyThree() {
     controls.autoRotate = false;
     controls.autoRotateSpeed = 1;
     controls.maxPolarAngle = Math.PI / 2;
-    controls.minDistance = 1;
+    controls.minDistance = -20;
     controls.maxDistance = 20;
 
     refContainer.current && refContainer.current.appendChild(renderer.domElement);
@@ -101,11 +101,20 @@ function MyThree() {
     // createBarChart(heights1)
 
     heights1.forEach((bar, i) => {
-      const geometry = new THREE.BoxGeometry(.5, bar1, .5);
+      const geometry = new THREE.BoxGeometry(.5, bar, .5);
       var cube = new THREE.Mesh(geometry, material);
         cube.position.x = i - length(heights1)/2 + .5;
         cube.position.y = bar/2 - max(heights1)/2;
         cube.position.z = 0;
+        scene.add(cube);
+    });
+
+    heights2.forEach((bar, i) => {
+      const geometry = new THREE.BoxGeometry(.5, bar, .5);
+      var cube = new THREE.Mesh(geometry, material);
+        cube.position.x = i - length(heights2)/2 + .5;
+        cube.position.y = bar/2 - max(heights2)/2;
+        cube.position.z = -6;
         scene.add(cube);
     });
 
