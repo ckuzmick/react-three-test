@@ -88,7 +88,7 @@ function MyThree() {
       const geometry = new THREE.BoxGeometry(.5, bar, .5);
       var cube = new THREE.Mesh(geometry, material);
         cube.position.x = i - arrayLength/2 + .5;
-        cube.position.y = bar/2 - max;
+        cube.position.y = bar/2 - max/2;
         cube.position.z = 0;
         scene.add(cube);
     });
