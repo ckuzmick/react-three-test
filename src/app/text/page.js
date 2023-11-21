@@ -25,7 +25,7 @@ function MyThree() {
     controls.enableDamping = true;
     controls.dampingFactor = 0.12;
     controls.rotateSpeed = 0.08;
-    controls.autoRotate = true;
+    controls.autoRotate = false;
     controls.autoRotateSpeed = 1;
     controls.maxPolarAngle = Math.PI / 2;
     controls.minDistance = 1;
@@ -49,32 +49,49 @@ function MyThree() {
 
     const points = [
       {
-        x: 1,
+        x: -1,
         y: 2,
         z: 0
       },
       {
-        x: 1,
+        x: 5,
         y: 5,
         z: 0
       },
       {
-        x: 1,
+        x: -3,
         y: 7,
         z: 0
       }
     ]
 
+    const heights = [
+      3, 4, 8, 6, 3, 4, 9, 4, 5, 6, 10, 12, 14, 10, 9, 4
+    ]
+
+
+
+    const arrayLength = heights.length;
+
     var material = new THREE.MeshNormalMaterial({ wireframe: false });
 
-    for (const point in points) {
-      const geometry = new THREE.BoxGeometry(1, 1, 1);
+    // for (const [i, point] in points) {
+    //   const geometry = new THREE.BoxGeometry(.5, .5, .5);
+    //   var cube = new THREE.Mesh(geometry, material);
+    //     cube.position.x = points[point].x;
+        // cube.position.y = points[point].y;
+        // cube.position.z = points[point].z;
+    //     scene.add(cube);
+    // };
+
+    heights.forEach((bar, i) => {
+      const geometry = new THREE.BoxGeometry(.5, bar, .5);
       var cube = new THREE.Mesh(geometry, material);
-        cube.position.x = points[point].x;
-        cube.position.y = points[point].y;
-        cube.position.z = points[point].z;
+        cube.position.x = i - arrayLength/2 + .5;
+        cube.position.y = bar/2;
+        cube.position.z = 0;
         scene.add(cube);
-    };
+    });
 
     // var geometry = new THREE.BoxGeometry(points[0].x, points[0].y, points[0].z);
     // var material = new THREE.MeshNormalMaterial({ wireframe: false });
