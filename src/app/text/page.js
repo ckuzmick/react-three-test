@@ -8,45 +8,44 @@ import createBarChart from '@/functions/barChart';
 
 function MyThree() {
   const refContainer = useRef(null);
-  // const [targetDistance, setTargetDistance] = useState(40);
-  var targetDistance = 40;
+
+  var targetDistance = 60;
   const setTargetDistance = (distance) => {
     targetDistance = distance;
   };
 
   useEffect(() => {
     var scene = new THREE.Scene();
-    scene.background = new THREE.Color().setHSL(0.6, 0, 0);
-    scene.fog = new THREE.Fog(scene.background, 20, 40);
+      scene.background = new THREE.Color().setHSL(0, 0, 0);
+      scene.fog = new THREE.Fog(scene.background, 21, 40);
 
     const dirLight = new THREE.DirectionalLight(0xffffff, 3);
-    dirLight.color.setHSL(0.1, 1, 0.95);
-    dirLight.position.set(0, 20, 50);
-    dirLight.position.multiplyScalar(30);
-    scene.add(dirLight);
-
-    dirLight.castShadow = true;
+      dirLight.color.setHSL(0.1, 1, 0.95);
+      dirLight.position.set(0, 20, 50);
+      dirLight.position.multiplyScalar(30);
+      dirLight.castShadow = true;
+      scene.add(dirLight);
 
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = -1.5 + window.scrollY / 250.0;
+      camera.position.z = 60;
 
     var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(window.innerWidth, window.innerHeight);
 
     var controls = new OrbitControls(camera, renderer.domElement);
-    controls.mouseButtons = {
-      ORBIT: THREE.MOUSE.RIGHT,
-      DOLLY: THREE.MOUSE.MIDDLE,
-      PAN: THREE.MOUSE.LEFT,
-    };
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.12;
-    controls.rotateSpeed = 0.08;
-    controls.autoRotate = false;
-    controls.autoRotateSpeed = 1;
-    controls.maxPolarAngle = Math.PI / 2;
-    controls.minDistance = -100;
-    controls.maxDistance = 100;
+      controls.mouseButtons = {
+        ORBIT: THREE.MOUSE.RIGHT,
+        DOLLY: THREE.MOUSE.MIDDLE,
+        PAN: THREE.MOUSE.LEFT,
+      };
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.12;
+      controls.rotateSpeed = 0.08;
+      controls.autoRotate = false;
+      controls.autoRotateSpeed = 1;
+      controls.maxPolarAngle = Math.PI / 2;
+      controls.minDistance = -100;
+      controls.maxDistance = 100;
 
     refContainer.current.appendChild(renderer.domElement);
 
@@ -72,25 +71,19 @@ function MyThree() {
 
     const heights2 = [4, 5, 7, 2, 3, 8, 12, 5, 10, 3, 10, 12, 4, 7, 10];
 
-    var material = new THREE.MeshStandardMaterial({ wireframe: false, roughness: 0.5, metalness: 1 });
+    const material = new THREE.MeshStandardMaterial({ wireframe: false, roughness: 0.5, metalness: 1 });
 
     createBarChart(heights2, 0, 0, 40, material, scene);
     createBarChart(heights, 0, 0, 20, material, scene);
     createBarChart(heights2, 0, 0, 0, material, scene);
 
-    camera.position.z = 60;
-
     const changeDist = (distance) => {
       if (distance !== targetDistance) {
-        if (distance < targetDistance - 2) {
-          camera.position.z += 1;
-        } else {
           camera.position.z += (targetDistance - distance) / 10;
-        }
       }
     };
 
-    var animate = function () {
+    const animate = () => {
       requestAnimationFrame(animate);
       controls.update();
       renderer.render(scene, camera);
@@ -104,6 +97,7 @@ function MyThree() {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
     });
+
   }, [targetDistance]);
 
   const handleButtonClick = (distance) => {
