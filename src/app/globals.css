@@ -26,3 +26,7 @@ section {
 p {
   color: white;
 }
+
+.canvas {
+  position: absolute;
+}

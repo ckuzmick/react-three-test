@@ -83,7 +83,7 @@ function MyThree() {
       if (distance !== targetDistance && distState) {
           camera.position.z += (targetDistance - distance) / 10;
           console.log(distState)
-          if ((targetDistance - 0.1) < distance && distance < (targetDistance + 0.1)) {
+          if ((targetDistance - 0.5) < distance && distance < (targetDistance + 0.5)) {
             console.log('this is working')
             camera.position.z = targetDistance
           };
@@ -120,16 +120,18 @@ function MyThree() {
 
   return (
     <main>
-      <button className='pr-5' onClick={() => handleButtonClick(20)}>
-        Graph 1
-      </button>
-      <button className='pr-5' onClick={() => handleButtonClick(40)}>
-        Graph 2
-      </button>
-      <button className='pr-5' onClick={() => handleButtonClick(60)}>
-        Graph 3
-      </button>
-      <div ref={ref}></div>
+      <div className='buttons'>
+        <button className='pr-5' onClick={() => handleButtonClick(20)}>
+          Graph 1
+        </button>
+        <button className='pr-5' onClick={() => handleButtonClick(40)}>
+          Graph 2
+        </button>
+        <button className='pr-5' onClick={() => handleButtonClick(60)}>
+          Graph 3
+        </button>
+      </div>
+      <div className='canvas' ref={ref}></div>
     </main>
   );
 }
