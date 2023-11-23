@@ -7,12 +7,14 @@ import '../globals.css';
 import createBarChart from '@/functions/barChart';
 
 function MyThree() {
-  const refContainer = useRef(null);
+  const ref = useRef(null);
 
   var targetDistance = 60;
   const setTargetDistance = (distance) => {
     targetDistance = distance;
   };
+
+  var distState = false;
 
   useEffect(() => {
     var scene = new THREE.Scene();
@@ -47,7 +49,7 @@ function MyThree() {
       controls.minDistance = -100;
       controls.maxDistance = 100;
 
-    refContainer.current.appendChild(renderer.domElement);
+    ref.current && ref.current.append(renderer.domElement);
 
     const points = [
       {
@@ -78,9 +80,13 @@ function MyThree() {
     createBarChart(heights2, 0, 0, 0, material, scene);
 
     const changeDist = (distance) => {
-      if (distance !== targetDistance) {
+      if (distance !== targetDistance && distState) {
           camera.position.z += (targetDistance - distance) / 10;
-      }
+          console.log(distState)
+          if ((targetDistance - 0.001) < distance < (targetDistance + 0.001)) {
+            console.log('this is working')
+          };
+      };
     };
 
     const animate = () => {
@@ -88,6 +94,10 @@ function MyThree() {
       controls.update();
       renderer.render(scene, camera);
       changeDist(camera.position.z);
+      console.log(distState, targetDistance, camera.position.z);
+      if (targetDistance == camera.position.z) {
+        distState = false
+      };
     };
 
     animate();
@@ -101,8 +111,10 @@ function MyThree() {
   }, [targetDistance]);
 
   const handleButtonClick = (distance) => {
+    distState = true;
     setTargetDistance(distance);
     console.log(distance)
+    console.log(distState)
   };
 
   return (
@@ -116,7 +128,7 @@ function MyThree() {
       <button className='pr-5' onClick={() => handleButtonClick(60)}>
         Graph 3
       </button>
-      <div ref={refContainer} />
+      <div ref={ref}></div>
     </main>
   );
 }
