@@ -85,6 +85,7 @@ function MyThree() {
           console.log(distState)
           if ((targetDistance - 0.001) < distance < (targetDistance + 0.001)) {
             console.log('this is working')
+            camera.position.z = targetDistance
           };
       };
     };
