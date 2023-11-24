@@ -121,13 +121,13 @@ function MyThree() {
   return (
     <main>
       <div className='buttons'>
-        <button className='pr-5' onClick={() => handleButtonClick(20)}>
+        <button className='button' onClick={() => handleButtonClick(20)}>
           Graph 1
         </button>
-        <button className='pr-5' onClick={() => handleButtonClick(40)}>
+        <button className='button' onClick={() => handleButtonClick(40)}>
           Graph 2
         </button>
-        <button className='pr-5' onClick={() => handleButtonClick(60)}>
+        <button className='button' onClick={() => handleButtonClick(60)}>
           Graph 3
         </button>
       </div>

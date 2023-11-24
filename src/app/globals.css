@@ -30,3 +30,16 @@ p {
 .canvas {
   position: absolute;
 }
+
+.buttons {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.button {
+  text-align: center;
+  padding: 10px;
+}
