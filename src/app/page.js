@@ -8,11 +8,8 @@ function Home() {
   return (
     <main>
       <section>
-        <h1>Test Section</h1>
-      </section>
-      <BoxTest></BoxTest> 
-      <section>
-        <h1>Another Test</h1>
+        <h1>Hi!</h1>
+        <p>You're now on my react-three testing site, there's some more stuff at <a href="/text">/text</a></p>
       </section>
     </main>
   );
