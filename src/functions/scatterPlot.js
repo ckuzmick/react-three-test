@@ -8,8 +8,8 @@ const createScatterPlot = (array, x, y, z, material, scene, size) => {
         cube.position.x = point.x + x;
         cube.position.y = point.y + y;
         cube.position.z = point.z + z;
-        cube.rotation.x = .5;
-        cube.rotation.y = .5;
+        // cube.rotation.x = .5;
+        // cube.rotation.y = .5;
         scene.add(cube);
     });
 };
