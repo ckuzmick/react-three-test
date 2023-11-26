@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import '../globals.css';
 import createBarChart from '@/functions/barChart';
+import createScatterPlot from '@/functions/scatterPlot';
 
 function MyThree() {
   const ref = useRef(null);
@@ -55,7 +56,7 @@ function MyThree() {
       {
         x: -1,
         y: 2,
-        z: 0,
+        z: -2,
       },
       {
         x: 5,
@@ -65,7 +66,7 @@ function MyThree() {
       {
         x: -3,
         y: 7,
-        z: 0,
+        z: 1,
       },
     ];
 
@@ -75,9 +76,10 @@ function MyThree() {
 
     const material = new THREE.MeshStandardMaterial({ wireframe: false, roughness: 0.5, metalness: 1 });
 
-    createBarChart(heights2, 0, 0, 40, material, scene);
-    createBarChart(heights, 0, 0, 20, material, scene);
-    createBarChart(heights2, 0, 0, 0, material, scene);
+    createBarChart(heights2, 0, 0, 60, material, scene);
+    createBarChart(heights, 0, 0, 40, material, scene);
+    createBarChart(heights2, 0, 0, 20, material, scene);
+    createScatterPlot(points, 0, 0, 0, material, scene)
 
     const changeDist = (distance) => {
       if (distance !== targetDistance && distState) {
@@ -121,13 +123,16 @@ function MyThree() {
   return (
     <main>
       <div className='buttons'>
-        <button className='button' onClick={() => handleButtonClick(20)}>
-          Graph 1
+      <button className='button' onClick={() => handleButtonClick(20)}>
+          Graph 0
         </button>
         <button className='button' onClick={() => handleButtonClick(40)}>
-          Graph 2
+          Graph 1
         </button>
         <button className='button' onClick={() => handleButtonClick(60)}>
+          Graph 2
+        </button>
+        <button className='button' onClick={() => handleButtonClick(80)}>
           Graph 3
         </button>
       </div>

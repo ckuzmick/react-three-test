@@ -10,7 +10,7 @@ function Home() {
       <section>
         <h1>Test Section</h1>
       </section>
-      <BoxTest></BoxTest>
+      <BoxTest></BoxTest> 
       <section>
         <h1>Another Test</h1>
       </section>
