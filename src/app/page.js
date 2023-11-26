@@ -9,7 +9,7 @@ function Home() {
     <main>
       <section>
         <h1>Hi!</h1>
-        <p>You're now on my react-three testing site, there's some more stuff at <a href="/text">/text</a></p>
+        <p>You&apos;re now on my react-three testing site, there&apos;s some more stuff at <a href="/text">/text</a></p>
       </section>
     </main>
   );
