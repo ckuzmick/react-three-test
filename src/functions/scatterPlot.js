@@ -3,7 +3,7 @@ import React from 'react';
 
 const createScatterPlot = (array, x, y, z, material, scene, size) => {
     array.map((point) => {
-        const geometry = new THREE.BoxGeometry(size, size, size);
+        const geometry = new THREE.SphereGeometry(size, size, size);
         var cube = new THREE.Mesh(geometry, material);
         cube.position.x = point.x + x;
         cube.position.y = point.y + y;
