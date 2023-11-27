@@ -74,12 +74,12 @@ function MyThree() {
 
     const heights2 = [4, 5, 7, 2, 3, 8, 12, 5, 10, 3, 10, 12, 4, 7, 10];
 
-    const material = new THREE.MeshNormalMaterial({ wireframe: false, roughness: 0.5, metalness: 1 });
+    const material = new THREE.MeshStandardMaterial({ wireframe: false, roughness: 0.5, metalness: 1 });
 
     createBarChart(heights2, 0, 0, 60, material, scene);
     createBarChart(heights, 0, 0, 40, material, scene);
     createBarChart(heights2, 0, 0, 20, material, scene);
-    createScatterPlot(points, 0, 0, 0, material, scene)
+    createScatterPlot(points, 0, 0, 0, material, scene, 0.25)
 
     const changeDist = (distance) => {
       if (distance !== targetDistance && distState) {
